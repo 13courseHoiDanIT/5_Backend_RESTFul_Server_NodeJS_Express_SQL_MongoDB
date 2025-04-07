@@ -15,7 +15,7 @@ app.set('view engine', 'ejs')
 
 //khai baos route
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Hello World!QUoc Toan')
 })
 
 app.get('/abc', (req, res) => {
