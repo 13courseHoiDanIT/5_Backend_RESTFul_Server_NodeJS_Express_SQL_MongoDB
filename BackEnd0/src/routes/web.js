@@ -1,16 +1,11 @@
 const express = require('express')
+const { getHomepage, getABC, getQuocToan } = require('../controllers/homeController')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send('Hello World!Qoc Toan')
-})
+router.get('/', getHomepage)
 
-router.get('/abc', (req, res) => {
-    res.send('check ABC!')
-})
+router.get('/abc', getABC)
 
-router.get('/quoctoan', (req, res) => {
-    res.render('sample.ejs')
-})
+router.get('/quoctoan', getQuocToan)
 
-module.exports = router;
+module.exports = router
