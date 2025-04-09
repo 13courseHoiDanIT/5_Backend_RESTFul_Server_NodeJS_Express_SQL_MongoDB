@@ -48,6 +48,17 @@ const postUpdateUser = async (req, res) => {
     res.redirect('/')
 }
 
+const postDeleteUser = async (req, res) => {
+    const userID = req.params.id;
+
+    let user = await getUserByID(userID);
+    res.render('delete.ejs', { user: user })
+}
+
+const postHandleRemoveUser = (req, res) => [
+    res.send("ok delete")
+]
+
 module.exports = {
     getHomepage,
     getABC,
@@ -58,5 +69,7 @@ module.exports = {
 
 
     postCreateUser,
-    postUpdateUser
+    postUpdateUser,
+    postDeleteUser,
+    postHandleRemoveUser
 }
