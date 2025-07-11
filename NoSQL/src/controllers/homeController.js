@@ -15,9 +15,21 @@ const getHoiDanIT = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-    console.log(req.body)
+    let email = req.body.email;
+    let name = req.body.name;
+    let city = req.body.city;
 
-    res.send('Create a new user')
+
+    connection.query(
+        `insert into
+        Users (email,name,city)  
+        values(?,?,?)`,
+        [email, name, city],
+        function (err, results) {
+            res.send("Created user succed!")
+        }
+    )
+
 }
 
 module.exports = { getHomePage, getABC, getHoiDanIT, postCreateUser }
