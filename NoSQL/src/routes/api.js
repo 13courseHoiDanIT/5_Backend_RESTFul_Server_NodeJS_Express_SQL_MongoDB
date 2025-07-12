@@ -1,6 +1,6 @@
 const express = require('express')
 const routerAPI = express.Router()
-const { getUsersAPI, postCreateUserAPI, putUpdateUserAPI } = require('../controllers/apiController')
+const { getUsersAPI, postCreateUserAPI, putUpdateUserAPI, deleteRemoveUser } = require('../controllers/apiController')
 
 routerAPI.get('/', (req, res) => {
     res.send("hello world with apis")
@@ -15,6 +15,7 @@ routerAPI.get('/abc', (req, res) => {
 routerAPI.get('/users', getUsersAPI)
 routerAPI.post('/users', postCreateUserAPI)
 routerAPI.put('/users', putUpdateUserAPI)
+routerAPI.delete('/users', deleteRemoveUser)
 
 
 module.exports = routerAPI;
