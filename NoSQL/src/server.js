@@ -24,7 +24,16 @@ app.use('/', webRoutes);
 //test connection
 connection();
 
+(async () => {
+    try {
+        await connection();
+        app.listen(port, hostname => {
+            console.log(`Backend zero app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log("erro connect to DB", error)
+    }
+})()
 
-app.listen(port, hostname => {
-    console.log(`Example app listening on port ${port}`)
-})
+
+
