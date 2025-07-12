@@ -5,7 +5,7 @@ const User = require('../models/user')
 
 
 const getHomePage = async (req, res) => {
-    let results = [];
+    let results = await User.find();
     return res.render('home.ejs', { listUsers: results })
 
 }
@@ -22,10 +22,6 @@ const postCreateUser = async (req, res) => {
     let name = req.body.name;
     let city = req.body.city;
 
-    // let [results, fields] = await connection.query(
-    //     `insert into Users (email,name,city)  
-    //     values(?,?,?)`, [email, name, city],
-    // );
     await User.create({
         email: email,
         name: name,
@@ -33,10 +29,6 @@ const postCreateUser = async (req, res) => {
     })
 
     res.send("Created user succed!")
-
-
-    // const [results, fields] = await connection.query('SELECT * FROM User u');
-
 }
 
 const getCreatePage = (req, res) => {
@@ -45,9 +37,7 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userId = req.params.id;
-
     let user = await getUserById(userId)
-
     res.render('edit.ejs', { userEdit: user })
 }
 
