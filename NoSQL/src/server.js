@@ -19,10 +19,10 @@ app.use(express.urlencoded({ extended: true }))
 configViewEngine(app);
 
 //khai baos route
-app.use('/', webRoutes)
+app.use('/', webRoutes);
 
 //test connection
-
+connection();
 
 
 app.listen(port, hostname => {
