@@ -4,12 +4,19 @@ const path = require('path')
 const configViewEngine = require('./config/viewEngine')
 const webRoutes = require('./routes/web')
 const apiRoutes = require('./routes/api')
+const fileUpload = require('express-fileupload');
+
+
 const connection = require('./config/database')
 const mongoose = require('mongoose');
 
 const app = express()
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME
+
+//config file upload 
+// default options
+app.use(fileUpload());
 
 //config reqbody
 app.use(express.json())
