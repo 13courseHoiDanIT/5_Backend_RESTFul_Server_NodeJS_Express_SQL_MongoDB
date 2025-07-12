@@ -5,7 +5,6 @@ const configViewEngine = require('./config/viewEngine')
 const webRoutes = require('./routes/web')
 const connection = require('./config/database')
 const mongoose = require('mongoose');
-const Kitten = require('./models/Kitten')
 
 const app = express()
 const port = process.env.PORT || 8888;
@@ -23,8 +22,6 @@ configViewEngine(app);
 //khai baos route
 app.use('/', webRoutes);
 
-const cat = new Kitten({ name: 'Hoi Dan IT Cat Model' });
-cat.save();
 //test connection
 
 (async () => {
