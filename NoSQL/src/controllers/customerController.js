@@ -1,5 +1,6 @@
 const { uploadSingleFile } = require("../services/fileServices");
-const { createCustomerService, createArrauCustomerService } = require('../services/customerServices')
+const { createCustomerService, createArrauCustomerService } = require('../services/customerServices');
+const Customer = require("../models/customers");
 
 // {key: value}
 module.exports = {
@@ -42,6 +43,18 @@ module.exports = {
                 EC: -1,
                 data: customers
             })
+        }
+
+    },
+    getAllCustomer: async (req, res) => {
+        try {
+            let results = await Customer.find();
+            return res.status(200).json({
+                EC: 0,
+                data: results
+            })
+        } catch (error) {
+            return null
         }
 
     }
