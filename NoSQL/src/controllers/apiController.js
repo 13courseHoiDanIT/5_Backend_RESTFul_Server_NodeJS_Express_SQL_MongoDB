@@ -30,7 +30,7 @@ const putUpdateUserAPI = async (req, res) => {
     let name = req.body.name;
     let city = req.body.city;
     let userId = req.body.userId;
-    let user = await User.updateOne({ _id: userId }, { email: email, name: name, city, city });
+    let user = await User.updateOne({ _id: userId }, { email: email, name: name, city: city });
 
     return res.status(200).json({
         EC: 0,
