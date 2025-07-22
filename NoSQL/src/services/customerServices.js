@@ -19,13 +19,28 @@ module.exports = {
         }
     },
 
-    createArrauCustomerService: async (arr) => {
+    createArrayCustomerService: async (arr) => {
         try {
             let result = await Customer.insertMany(arr);
             return result
         } catch (error) {
             console.log("error", error)
             return null;
+        }
+    },
+
+    putUpdateCustomerService: async (name, address, phone, email, description, id) => {
+        try {
+            let customer = await Customer.updateOne({ _id: id }, {
+                name: name,
+                address: address,
+                phone: phone,
+                email: email,
+                description: description
+            })
+            return customer
+        } catch (error) {
+            return null
         }
     }
 }
